@@ -1,0 +1,21 @@
+LIBRARY  "SENDG.DLL"
+
+EXPORTS
+	se_connect @1
+	se_get_id @2
+	se_get_version @3
+	se_erase_memory @4
+	se_add_key @5
+	se_set_mapset @6
+	se_add_file @7
+	se_add_raw_file @8
+	se_add_dll_file @9
+	se_upload @10
+	se_get_memory @11
+	se_disconnect @12
+	se_upload_no_callback @13
+	se_add_crypt_file @14
+	se_disable_mps @15
+	se_disable_output @16
+	se_add_file_internal @17
+	se_upload_no_callback_NT @18

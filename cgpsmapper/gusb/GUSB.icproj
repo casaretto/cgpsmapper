@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<VisualStudioProject
+	ProjectType="Intel C++ Project"
+	Version="11.1"
+	Name="sendmap20"
+	ProjectGUID="{B65AE82F-A8B5-497B-8F58-33EB6DCA9450}"
+	VCNestedProjectGUID="{09C6BE1D-3FF4-4D92-BCAC-6143A5B35B31}"
+	VCNestedProjectFileName="GUSB.vcproj">
+	<Configurations>
+		<Configuration
+			Name="ReleaseDLL|Win32">
+			<Tool
+				Name="CppCmplrTool"
+				UseProcessorExtensions="0"/>
+		</Configuration>
+	</Configurations>
+	<Files/>
+</VisualStudioProject>
