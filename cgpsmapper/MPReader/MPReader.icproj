@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<VisualStudioProject
+	ProjectType="Intel C++ Project"
+	Version="11.1"
+	Name="MPReader"
+	ProjectGUID="{1782576D-1419-475E-87A8-3DC34EFDC17D}"
+	VCNestedProjectGUID="{ECE318D2-0453-48F4-955D-2E87CB6C75B7}"
+	VCNestedProjectFileName="MPReader.vcproj">
+	<Configurations>
+		<Configuration
+			Name="Release|Win32">
+			<Tool
+				Name="CppCmplrTool"
+				GenerateAlternateCodePaths="0"
+				UseProcessorExtensions="0"
+				Parallelization="true"/>
+		</Configuration>
+	</Configurations>
+	<Files/>
+</VisualStudioProject>
