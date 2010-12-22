@@ -18,7 +18,7 @@
 #include <boost/tokenizer.hpp>
 #include <string.h>
 #include <algorithm>
-#include "../sqlite-source/sqlite3.h"
+#include <sqlite3.h>
 #include "./../mapRead/mapReadDLL.h"
 #include "utils.h"
 #include "filexor.h"
@@ -554,7 +554,7 @@ namespace FTR {
 				string	t_name;
 				int		t_name_idx;
 				unsigned short	t_city_index;
-				unsigned long tl_name;
+				unsigned long tl_name=0;
 				map<unsigned long,_road>::iterator	ulica;
 				map<string,_road_index>::iterator	ulica_adres;
 				unsigned short		region_i,country_i;
@@ -943,7 +943,7 @@ order by sort_id, xflag_seq
 			if( multibody ) {
 				int	t_last_id = -1;
 				int	t_id;
-				int	t_sort;
+				int	t_sort=0;
 				string	last_string;
 				char *s;
 

@@ -16,7 +16,7 @@
 #include <string>
 #include "ftrcreate.h"
 #include "filexor.h"
-#include "../sqlite-source/sqlite3.h"
+#include <sqlite3.h>
 
 namespace MDR_CREATOR {
 

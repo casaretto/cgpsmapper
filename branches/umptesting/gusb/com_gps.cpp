@@ -174,7 +174,7 @@ bool COM_interface::erase_memory() {
 
 bool COM_interface::send_map_chunk(char* data,int size) {
 	int read_pos,write_pos;
-	int last_correct_read_pos;
+	int last_correct_read_pos = 0;
 	int last_correct_write_pos;
 	int tries;
 	if( size > 0x1000 )
@@ -533,7 +533,7 @@ redoit:
 
 
 /* send the garmin formatted message */
-void COM_interface::send_message(char *message, int bytes, char *msgtype) {
+void COM_interface::send_message(const char *message, int bytes, const char *msgtype) {
 	short	i;
 	int		n;
 	char	csum = 0;

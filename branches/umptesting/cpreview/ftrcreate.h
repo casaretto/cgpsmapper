@@ -19,7 +19,7 @@
 #include <set>
 #include <string>
 #include <algorithm>
-#include "../sqlite-source/sqlite3.h"
+#include <sqlite3.h>
 
 //- pozniej do "odkomentowania"
 #define _TEMP_REMOVE 0

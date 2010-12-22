@@ -11,7 +11,7 @@
 */
 
 //#include <boost/interprocess/managed_mapped_file.hpp>
-#include <boost/exception.hpp>
+#include <boost/exception/all.hpp>
 #include <string>
 #include <map>
 #include <assert.h>
@@ -522,6 +522,7 @@ long IMG_internal_list::initMap(int selected_file_no,unsigned int selected_sub_m
 	int				start_index = 1;
 	unsigned int	lbl_address;
 	unsigned int	id = 0;
+
 	char			id_buffer[10];
 	unsigned char	level_def[10];
 
@@ -1103,13 +1104,13 @@ unsigned long IMG_internal_list::readBits(const unsigned short &number_of_bits) 
 
 	if( bit_position & 7 ) {
 		if( bit_stream_len > bits_bs+4 )
-			bits_res = (bits_res >> static_cast<unsigned __int32>(bit_position & 7L)) | (static_cast<long>(read_buffer[bits_bs+4L]) << static_cast<unsigned __int32>(32L - (bit_position & 7L)));
+			bits_res = (bits_res >> static_cast<uint32_t>(bit_position & 7L)) | (static_cast<long>(read_buffer[bits_bs+4L]) << static_cast<uint32_t>(32L - (bit_position & 7L)));
 		else
-			bits_res = (bits_res >> static_cast<unsigned __int32>(bit_position & 7L)) | (0L << static_cast<unsigned __int32>(32 - (bit_position & 7L)));
+			bits_res = (bits_res >> static_cast<uint32_t>(bit_position & 7L)) | (0L << static_cast<uint32_t>(32 - (bit_position & 7L)));
 	}
 
 	bit_position += number_of_bits;
-	return( (bits_res << static_cast<unsigned __int32>(32L-number_of_bits)) >> static_cast<unsigned __int32>(32L-number_of_bits) );
+	return( (bits_res << static_cast<uint32_t>(32L-number_of_bits)) >> static_cast<uint32_t>(32L-number_of_bits) );
 }
 
 
@@ -1924,6 +1925,7 @@ int IMG_internal_list::exportPolylineSegments(const int layer,const int type,con
 			if( readBits(1) != 0 ) {
 				segments[t_curr_segment].segment = (coord_no-1);
 				t_curr_segment++;
+
 				segment_change = true;
 			}
 		} 
@@ -2788,6 +2790,7 @@ void IMG_internal_list::readNET(const unsigned long& net_address) {
 
 	int					records = 0;
 
+
 	memset(segment_definition,0,sizeof segment_definition);
 	memset(address,0,sizeof address);
 	memset(address_i,0,sizeof address_i);
@@ -2899,7 +2902,7 @@ void IMG_internal_list::readNET(const unsigned long& net_address) {
 			if( locateRGN40(tre_idx,rgn_idx,layer,rgn_address,bit_shift,start_x,start_y) ) {
 				const int points = exportPolylineSegments(layer,0x40,rgn_address,bit_shift,start_x,start_y,address,t_address_size);
 				//skopiowaæ do docelowego
-				for( int i = 0; i < t_address_size; segments_size++,i++ ) {
+				for( unsigned int i = 0; i < t_address_size; segments_size++,i++ ) {
 					if( address[i].segment != points ) { // ostatnie nalezy do nastepnej ulicy
 						segment_definition[segments_size].segment = address[i].segment;
 						segment_definition[segments_size].segment_coord = address[i].segment_coord;
@@ -3025,6 +3028,7 @@ void IMG_internal_list::readNET(const unsigned long& net_address) {
 							t_idx |= ((read_buffer[data_start])<<5) | ((read_buffer[data_start+1])<<(5+8));
 							data_start+=2;
 						}
+
 						if( (t_city & 3) == 3 )	{
 							t_idx |= ((read_buffer[data_start])<<5) | ((read_buffer[data_start+1])<<(5+8)) | ((read_buffer[data_start+2])<<(5+16));
 							data_start+=3;

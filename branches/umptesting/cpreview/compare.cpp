@@ -102,6 +102,7 @@ namespace g_compare {
 		} else if( codepage == 1256 ) {
 			memcpy(sort_table,LBL1256,sizeof(LBL1256));
 			memcpy(sort_table_a,LBL1256_a,sizeof(LBL1256_a));
+
 			lang_id = 0x10;
 		} else {
 			memcpy(sort_table,LBL1252,sizeof(LBL1252));
@@ -170,8 +171,8 @@ namespace g_compare {
 	}
 
 	int compare(void* empty,int x_len,const void* x_c,int y_len,const void* y_c) {
-		int		t_pozX = 0;
-		int		t_pozY = 0;
+		std::string::size_type t_pozX = 0;
+		std::string::size_type t_pozY = 0;
 		size_t	tmp;
 		std::string	stringX,stringY;
 		std::string	x,y;
@@ -188,12 +189,12 @@ namespace g_compare {
 		// zmiana kolejnosci dla kodow 1e i 1f
 /*
 		if( x.find(0x1d) != x.npos) {
-			t_pozX = static_cast<int>(x.find(0x1d));
+			t_pozX = x.find(0x1d);
 			//stringX = x.substr(t_pozX+7);
 			x = x.substr(0,t_pozX);
 		}
 		if( y.find(0x1d) != x.npos) {
-			t_pozY = static_cast<int>(y.find(0x1d));
+			t_pozY = y.find(0x1d);
 			//stringX = x.substr(t_pozX+7);
 			y = y.substr(0,t_pozY);
 		}
@@ -212,13 +213,13 @@ namespace g_compare {
 		overwrite = true;
 		stringX = upper_case(x);
 		if( stringX.find(0x1e) != stringX.npos) {
-			t_pozX = static_cast<int>(stringX.find(0x1e));
+			t_pozX = stringX.find(0x1e);
 			stringX = x.substr(t_pozX+1);
 			//stringX += x.substr(0,t_pozX);
 			overwrite = false;
 		}
 		if( stringX.find(0x1f) != stringX.npos) {
-			t_pozX = static_cast<int>(stringX.find(0x1f));
+			t_pozX = stringX.find(0x1f);
 			//stringX = x.substr(t_pozX+1);
 			stringX += x.substr(0,t_pozX);
 			overwrite = false;
@@ -229,13 +230,13 @@ namespace g_compare {
 		overwrite = true;
 		stringY = upper_case(y);
 		if( stringY.find(0x1e) != stringY.npos) {
-			t_pozY = static_cast<int>(stringY.find(0x1e));
+			t_pozY = stringY.find(0x1e);
 			stringY = y.substr(t_pozY+1);
 			//stringY += y.substr(0,t_pozY);
 			overwrite = false;
 		}
 		if( stringY.find(0x1f) != stringY.npos) {
-			t_pozY = static_cast<int>(stringY.find(0x1f));
+			t_pozY = stringY.find(0x1f);
 			//stringY = y.substr(t_pozY+7);
 			stringY += y.substr(0,t_pozY);
 			overwrite = false;
@@ -247,13 +248,13 @@ namespace g_compare {
 		overwrite = true;
 		stringY = upper_case(y);
 		if( stringY.find("~[0X1E]") != stringY.npos) {
-			t_pozY = static_cast<int>(stringY.find("~[0X1E]"));
+			t_pozY = stringY.find("~[0X1E]");
 			stringY = y.substr(t_pozY+7);
 			stringY += y.substr(0,t_pozY);
 			overwrite = false;
 		}
 		if( stringY.find("~[0X1F]") != stringY.npos) {
-			t_pozY = static_cast<int>(stringY.find("~[0X1F]"));
+			t_pozY = stringY.find("~[0X1F]");
 			stringY = y.substr(t_pozY+7);
 			stringY += y.substr(0,t_pozY);
 			overwrite = false;

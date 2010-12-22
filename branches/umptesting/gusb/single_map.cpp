@@ -727,7 +727,7 @@ bool IMG::add_IMG(const char* file_name,vector<internal_file> *TRE_file_list,
 
 		_splitpath(file_name,drive,dir,local_file_name,t_file_type);
 #else
-		char	*t_ext;		
+		const char	*t_ext;		
 		t_ext = strrchr(file_name,'.');
 		//*t_file_type = '\0';
 		memset(t_file_type,0,sizeof(t_file_type));
@@ -1038,8 +1038,8 @@ internal_file_type IMG::add_file_from_FAT(
 		fclose(temp_mps_file);
 	}
 
-	if( gps_file == false && (new_file_type != imgFAT && (new_file_type != imgMPS || crypt_start > 0 ) /*&& new_file_type != imgSRT*/ ) ||
-		gps_file == true && (new_file_type != imgFAT /*&& new_file_type != imgSRT*/ )) {
+	if( (gps_file == false && (new_file_type != imgFAT && (new_file_type != imgMPS || crypt_start > 0 ) /*&& new_file_type != imgSRT*/ )) ||
+		(gps_file == true && (new_file_type != imgFAT /*&& new_file_type != imgSRT*/ )) ) {
 			bool process_file = false;
 
 			//warunek - jesli do zaladowania tylko wybrany plik z IMG...

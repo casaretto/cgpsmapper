@@ -10,10 +10,15 @@
 
 */
 #include "sim_gps.h"
-#include "./../tinyxml/tinyxml.h"
+#include <tinyxml.h>
 #include <limits.h>
 #include <vector>
 #include <string>
+
+#ifndef WIN32
+  #include <sys/stat.h>
+#endif
+
 
 SIM_interface::SIM_interface(bool silent)
 : transmission_gps(silent) {
@@ -36,13 +41,13 @@ SIM_interface::SIM_interface(bool silent)
 
 	strcpy(GPS_version,"Storage GPS");
 	GPS_software = 0;
-	GPS_memory = 2 * 1024 * 1024 * 1024;
+	GPS_memory = 2147483648U;
 	GPS_max_maps = 99999;
 }
 
 bool SIM_interface::send_map_chunk(char* buffer,int size) {
 	fseek(out_file,map_address,SEEK_SET);
-	if( fwrite(buffer,1,size,out_file) != size )
+	if( fwrite(buffer,1,size,out_file) != (unsigned int)size )
 		return false;
 	map_address += size;
 	return true;
@@ -184,7 +189,11 @@ bool SIM_interface::open_com(const char* file_name) {
 		return true;
 
 	//check directory if exist
+#ifdef WIN32
 	CreateDirectory(t_local_drive_directory.c_str(),NULL);
+#else
+	mkdir(t_local_drive_directory.c_str(),0777);
+#endif
 
 	out_file = fopen(t_local_drive_name.c_str(),"w+b");
 	if(out_file == NULL ) {

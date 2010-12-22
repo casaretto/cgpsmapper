@@ -44,14 +44,14 @@ void errorClass::showError(int line,const char* file_name,int code)
 	string	text;
 	if( file_name ) {
 		if( line >= 0 ) {
-			text = sprintf("%s (%d) : %s",file_name,line,warn_messages[code]);
+			text = sprintf(buffer,"%s (%d) : %s",file_name,line,warn_messages[code]);
 /*			text = file_name;
 			text += "(";
 			text += itoa(line,buffer,10);
 			text += ") : ";
 			text += warn_messages[code];*/
 		} else {
-			text = sprintf("%s %s",warn_messages[code],file_name);
+			text = sprintf(buffer,"%s %s",warn_messages[code],file_name);
 /*
 			text += warn_messages[code];
 			text += " ";

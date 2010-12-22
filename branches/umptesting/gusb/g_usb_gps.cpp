@@ -144,7 +144,7 @@ int	GUSB_interface::read_data() {
 	return -1;
 }
 
-bool GUSB_interface::request_file_packet(char* file_name) {
+bool GUSB_interface::request_file_packet(const char* file_name) {
 	unsigned long	read_data = 0;
 
 	for(int a = 18; a < 18 + 12; a++) gr_get_file[a] = 0;

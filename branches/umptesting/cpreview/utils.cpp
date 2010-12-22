@@ -161,12 +161,13 @@ string first_up(string text)
   string::iterator t_pos = text.begin();
   while( t_pos != text.end() )
   {
-    if( prev == ' ' )
+    if( prev == ' ' ) {
       if( *t_pos >='a' && *t_pos <= 'z' )
-	*t_pos = 'A' + (*t_pos-'a');
-    else
+        *t_pos = 'A' + (*t_pos-'a');
+    } else {
       if( *t_pos >='A' && *t_pos <= 'Z' )
-	*t_pos = 'a' + (*t_pos-'A');
+        *t_pos = 'a' + (*t_pos-'A');
+    }
     prev = *t_pos;
     t_pos++;
   }

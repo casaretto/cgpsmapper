@@ -58,7 +58,7 @@ private:
 protected:	 
 	bool	read_data_com(int timeout);
 	bool	get_message(int timeout);
-	void	send_message(char *message, int bytes, char *msgtype);
+	void	send_message(const char *message, int bytes, const char *msgtype);
 	void	async_out(char *message, int bytes);
 	int		async_in_stat();
 	int		async_in();

@@ -10,7 +10,7 @@
 
 */
 
-#include <boost/exception.hpp>
+#include <boost/exception/all.hpp>
 #include <stdexcept>
 #include "hcode.h"
 

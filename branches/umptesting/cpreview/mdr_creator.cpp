@@ -271,8 +271,8 @@ void MDR_Header::write1Value(xor_fstream* file,std::string sql,int rec_size) {
 }
 
 void MDR_Header::writeMDR1(xor_fstream* file) {
-    sqlite3_stmt *ppStmt;
-    sqlite3_stmt *ppStmt2;
+    sqlite3_stmt *ppStmt=0;
+    sqlite3_stmt *ppStmt2=0;
 	char	*s;
 
 	//                                               0       1   2        3      4                 5                  6                 7                  8                9                   10                 11                  12                 13                  14                 15                  16                 17
@@ -360,7 +360,7 @@ void MDR_Header::writeMDR2(xor_fstream* file) {
 void MDR_Header::writeMDR3(xor_fstream* file) {
 }
 void MDR_Header::writeMDR4(xor_fstream* file) {
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	sqlite3_stmt *ppStmt;
 
 	file->seekg( mdr_header.mdr4_offset , SEEK_SET );
@@ -387,7 +387,7 @@ void MDR_Header::writeMDR4(xor_fstream* file) {
 void MDR_Header::writeMDR5(xor_fstream* file) {
 	int		lbl15_index;
 	int		mdr13_id,mdr14_id;
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	int		last_mdr20_id=-1;
 	sqlite3_stmt *ppStmt;
 	sqlite3_stmt *ppStmt2;
@@ -457,7 +457,7 @@ void MDR_Header::writeMDR5(xor_fstream* file) {
 }
 void MDR_Header::writeMDR6(xor_fstream* file) {
 	int		lbl15_index;
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	sqlite3_stmt *ppStmt;
 
 	file->seekg( mdr_header.mdr6_Zip_offset , SEEK_SET );
@@ -487,7 +487,7 @@ void MDR_Header::writeMDR6(xor_fstream* file) {
 
 void MDR_Header::writeMDR9(xor_fstream* file) {
 	int		lbl15_index;
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	sqlite3_stmt *ppStmt;
 
 	file->seekg( mdr_header.mdr9_offset , SEEK_SET );
@@ -510,7 +510,7 @@ void MDR_Header::writeMDR9(xor_fstream* file) {
 
 void MDR_Header::writeMDR10(xor_fstream* file) {
 	int		t_idx;
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	sqlite3_stmt *ppStmt;
 
 	file->seekg( mdr_header.mdr10_offset , SEEK_SET );
@@ -539,7 +539,7 @@ void MDR_Header::writeMDR10(xor_fstream* file) {
 }
 
 void MDR_Header::writeMDR11(xor_fstream* file) {
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	int		mdr13_id,mdr14_id;
 	sqlite3_stmt *ppStmt;
 	unsigned long t_idx;
@@ -604,7 +604,7 @@ void MDR_Header::writeMDR11(xor_fstream* file) {
 
 void MDR_Header::writeMDR13(xor_fstream* file) {
 	int		lbl15_index;
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	int		mdr14_id;
 	sqlite3_stmt *ppStmt;
 
@@ -637,7 +637,7 @@ void MDR_Header::writeMDR13(xor_fstream* file) {
 }
 void MDR_Header::writeMDR14(xor_fstream* file) {
 	int		lbl15_index;
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	sqlite3_stmt *ppStmt;
 
 	file->seekg( mdr_header.mdr14_Country_offset , SEEK_SET );
@@ -663,7 +663,7 @@ void MDR_Header::writeMDR14(xor_fstream* file) {
 
 void MDR_Header::writeMDR7(xor_fstream* file) {
 	int		lbl15_index;
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	sqlite3_stmt *ppStmt;
 
 /*
@@ -728,7 +728,7 @@ void MDR_Header::writeMDR8(xor_fstream* file) {
 }
 
 void MDR_Header::writeMDR20(xor_fstream* file) {
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	unsigned long t_idx;
 	sqlite3_stmt *ppStmt;
 /*
@@ -758,7 +758,7 @@ void MDR_Header::writeMDR20(xor_fstream* file) {
 }
 
 void MDR_Header::writeMDR21(xor_fstream* file) {
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	unsigned long t_idx;
 	sqlite3_stmt *ppStmt;
 	file->seekg( mdr_header.mdr21_offset, SEEK_SET );
@@ -783,7 +783,7 @@ void MDR_Header::writeMDR21(xor_fstream* file) {
 }
 
 void MDR_Header::writeMDR22(xor_fstream* file) {
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	unsigned long t_idx;
 	sqlite3_stmt *ppStmt;
 
@@ -809,7 +809,7 @@ void MDR_Header::writeMDR22(xor_fstream* file) {
 }
 
 void MDR_Header::writeMDR23(xor_fstream* file) {
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	int		mdr13_id,mdr14_id;
 	unsigned long t_idx;
 	sqlite3_stmt *ppStmt;
@@ -853,7 +853,7 @@ void MDR_Header::writeMDR23(xor_fstream* file) {
 }
 
 void MDR_Header::writeMDR24(xor_fstream* file) {
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	int		mdr14_id;
 	unsigned long t_idx;
 	sqlite3_stmt *ppStmt;
@@ -889,7 +889,7 @@ void MDR_Header::writeMDR24(xor_fstream* file) {
 }
 
 void MDR_Header::writeMDR25(xor_fstream* file) {
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	sqlite3_stmt *ppStmt;
 
 	file->seekg( mdr_header.mdr25_offset, SEEK_SET );
@@ -908,7 +908,7 @@ void MDR_Header::writeMDR25(xor_fstream* file) {
 }
 
 void MDR_Header::writeMDR26(xor_fstream* file) {
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	sqlite3_stmt *ppStmt;
 
 	file->seekg( mdr_header.mdr26_offset, SEEK_SET );
@@ -927,7 +927,7 @@ void MDR_Header::writeMDR26(xor_fstream* file) {
 }
 
 void MDR_Header::writeMDR27(xor_fstream* file) {
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	sqlite3_stmt *ppStmt;
 
 	file->seekg( mdr_header.mdr27_offset, SEEK_SET );
@@ -946,7 +946,7 @@ void MDR_Header::writeMDR27(xor_fstream* file) {
 }
 
 void MDR_Header::writeMDR28(xor_fstream* file) {
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	unsigned int mdr15_id;
 	sqlite3_stmt *ppStmt;
 /*
@@ -981,7 +981,7 @@ void MDR_Header::writeMDR28(xor_fstream* file) {
 }
 
 void MDR_Header::writeMDR29(xor_fstream* file) {
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	unsigned int mdr15_id;
 	sqlite3_stmt *ppStmt;
 /*
@@ -1021,7 +1021,7 @@ void MDR_Header::writeMDR29(xor_fstream* file) {
 
 void MDR_Header::writeMDR15(xor_fstream* file) {
 	int		lbl15_index;
-	int		t_size = 0;
+	unsigned int t_size = 0;
 	sqlite3_stmt *ppStmt;
 
 	file->seekg( mdr_header.mdr15_pktStr_offset, SEEK_SET );

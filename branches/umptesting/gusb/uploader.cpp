@@ -296,6 +296,7 @@ bool map_uploader::download_files(char* store_path,size_t store_path_size) {
 	return true;
 }
 
+
 void map_uploader::add_keys(vector<string> key_list) {
 	imgs.add_keys(key_list);
 }

@@ -34,7 +34,7 @@ transmission_gps::transmission_gps(bool silent) {
 	error_code = errNo;
 }
 
-bool transmission_gps::request_file(char* file_name,char* tmp_file,internal_file* i_file,int &total_size,int &position,bool buffer_data,int subfile_start) {
+bool transmission_gps::request_file(const char* file_name,const char* tmp_file,internal_file* i_file,int &total_size,int &position,bool buffer_data,int subfile_start) {
 	unsigned int	packets_no;
 	unsigned char	current_packet;
 	unsigned char	last_packet = 0;

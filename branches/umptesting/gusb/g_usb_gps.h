@@ -85,7 +85,7 @@ public:
 	bool send_map_chunk(char* data,int size);
 	bool finalize_upload();
 
-	bool request_file_packet(char* file_name);
+	bool request_file_packet(const char* file_name);
 };
 
 

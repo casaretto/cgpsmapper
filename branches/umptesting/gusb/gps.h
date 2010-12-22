@@ -108,8 +108,8 @@ public:
 	virtual void close_com() {;};
 	virtual int  get_preffered_chunk_size() {return 0xf00;};
 
-	virtual bool request_file(char* file_name,char* tmp_file,internal_file* i_file,int &total_size,int &position,bool buffer_data = false,int subfile_start=-1);
-	virtual bool request_file_packet(char*) {return false;};
+	virtual bool request_file(const char* file_name,const char* tmp_file,internal_file* i_file,int &total_size,int &position,bool buffer_data = false,int subfile_start=-1);
+	virtual bool request_file_packet(const char*) {return false;};
 };
 
 #endif

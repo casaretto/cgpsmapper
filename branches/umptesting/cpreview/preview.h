@@ -45,7 +45,8 @@ public:
 	std::string name;
 	std::string region_name;
 
-	img_item(std::string a_id_name,std::string a_name,int a_region_id,std::string a_region_name,int a_product_id) : name(a_name),id_name(a_id_name), region_id(a_region_id), region_name(a_region_name), product_id(a_product_id) {};
+	img_item(std::string a_id_name,std::string a_name,int a_region_id,std::string a_region_name,int a_product_id) :
+ region_id(a_region_id), product_id(a_product_id), id_name(a_id_name), name(a_name), region_name(a_region_name) {};
 };
 
 class MDX_element

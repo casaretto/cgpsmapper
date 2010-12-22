@@ -13,6 +13,8 @@
 #ifndef __img_structures_h
 #define __img_structures_h
 
+#include <boost/cstdint.hpp>
+
 const float c_fGarminUnit = 180.0 / (1UL << 23);
 
 typedef unsigned char B2_t [2];
@@ -86,31 +88,31 @@ struct rgn_extended {
 };
 
 //Conversion independent of the processor type - hi-lo or lo-hi
-inline unsigned __int16 ConvertB2ToUInt16 (const unsigned char* _data) {
-    return (static_cast<unsigned __int16>(_data [1]) << 8) + static_cast<unsigned __int16>(_data [0]);
+inline uint16_t ConvertB2ToUInt16 (const unsigned char* _data) {
+    return (static_cast<uint16_t>(_data [1]) << 8) + static_cast<uint16_t>(_data [0]);
 }
 
-inline __int16 ConvertB2ToInt16 (const unsigned char* _data) {
-    return (static_cast<__int16>(_data [1]) << 8) + static_cast<__int16> (_data [0]);
+inline int16_t ConvertB2ToInt16 (const unsigned char* _data) {
+    return (static_cast<int16_t>(_data [1]) << 8) + static_cast<int16_t> (_data [0]);
 }
 
-inline __int16 ConvertB2ToInt16 (const B2_t& _data) {
-    return (static_cast<__int16> (_data [1]) << 8) + static_cast<__int16> (_data [0]);
+inline int16_t ConvertB2ToInt16 (const B2_t& _data) {
+    return (static_cast<int16_t> (_data [1]) << 8) + static_cast<int16_t> (_data [0]);
 }
 
-inline unsigned __int32 ConvertB3ToUInt (const B3_t& _data) {
-    return (static_cast<unsigned __int32> (_data [2]) << 16) + (static_cast<unsigned __int32> (_data [1]) << 8) + static_cast<unsigned __int32> (_data [0]);
+inline uint32_t ConvertB3ToUInt (const B3_t& _data) {
+    return (static_cast<uint32_t> (_data [2]) << 16) + (static_cast<uint32_t> (_data [1]) << 8) + static_cast<uint32_t> (_data [0]);
 }
 
-inline __int32 ConvertB3ToInt (const B3_t& _data) {
-    __int32 l = (static_cast<unsigned __int32> (_data [2]) << 16) + (static_cast<unsigned __int32> (_data [1]) << 8) + static_cast<unsigned __int32> (_data [0]);
+inline int32_t ConvertB3ToInt (const B3_t& _data) {
+    int32_t l = (static_cast<uint32_t> (_data [2]) << 16) + (static_cast<uint32_t> (_data [1]) << 8) + static_cast<uint32_t> (_data [0]);
     if (l >= 0x800000)
         l -= 0x1000000;
 	return l;    
 }
 
-inline unsigned __int32 ConvertB4ToUInt32 (const unsigned char* _data) {
-    return (static_cast<unsigned __int32> (_data [3]) << 24) + (static_cast<unsigned __int32> (_data [2]) << 16) + (static_cast<unsigned __int32> (_data [1]) << 8) + static_cast<unsigned __int32> (_data [0]);
+inline uint32_t ConvertB4ToUInt32 (const unsigned char* _data) {
+    return (static_cast<uint32_t> (_data [3]) << 24) + (static_cast<uint32_t> (_data [2]) << 16) + (static_cast<uint32_t> (_data [1]) << 8) + static_cast<uint32_t> (_data [0]);
 }
 
 inline float ConvertB3ToDeg (const B3_t& _data) {
@@ -168,7 +170,7 @@ struct t_rect {
 	// In degrees.
 	float x0, y0, x1, y1;
 
-	t_rect () : x0 (200), x1 (-200), y0 (200), y1 (-200) {}
+	t_rect () : x0 (200), y0 (200), x1 (-200), y1 (-200) {}
 	
 	float Width  () const {return x1 > x0 ? x1 - x0 : 0;}
 	float Height () const {return y1 > y0 ? y1 - y0 : 0;}
