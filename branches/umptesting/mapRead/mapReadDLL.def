@@ -1,0 +1,18 @@
+LIBRARY  "MAPREAD.DLL"
+
+EXPORTS
+	mapRead_openIMG @1
+	mapRead_closeIMG @2
+	mapRead_readMap @3
+	mapRead_readPOI @4
+	mapRead_lastError @5
+	mapRead_closeAll @6
+	mapRead_mapValid @7
+	mapRead_readNET @8
+	mapRead_setInternal @9
+	mapRead_labelStyle @10
+	mapRead_readCities @11
+	mapRead_readTRE @12	
+	mapRead_readMap_details @13
+	mapRead_readNETroads @14
+	mapRead_readMap_road @15

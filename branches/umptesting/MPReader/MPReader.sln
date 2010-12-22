@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{EAF909A5-FA59-4C3D-9431-0FCC20D5BCF9}") = "MPReader", "MPReader.icproj", "{1782576D-1419-475E-87A8-3DC34EFDC17D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1782576D-1419-475E-87A8-3DC34EFDC17D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1782576D-1419-475E-87A8-3DC34EFDC17D}.Debug|Win32.Build.0 = Debug|Win32
+		{1782576D-1419-475E-87A8-3DC34EFDC17D}.Release|Win32.ActiveCfg = Release|Win32
+		{1782576D-1419-475E-87A8-3DC34EFDC17D}.Release|Win32.Build.0 = Release|Win32
+		{ECE318D2-0453-48F4-955D-2E87CB6C75B7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ECE318D2-0453-48F4-955D-2E87CB6C75B7}.Release|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

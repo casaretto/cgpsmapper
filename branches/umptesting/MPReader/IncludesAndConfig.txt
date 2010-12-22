@@ -1,0 +1,15 @@
+
+Includes:
+
+F:\Lib\boost_1_38_0\boost\tr1\tr1
+F:\Lib\boost_1_38_0
+F:\Lib\STLport-5.2.1\stlport
+F:\Lib\wxWidgets-2.8.10\include
+F:\Lib\wxWidgets-2.8.10\include\msvc
+F:\Lib\LuaPlus51_Build1100\Src
+
+
+Libs:
+
+f:\Lib\STLport-5.2.1\lib
+F:\Lib\wxWidgets-2.8.10\lib\vc_lib

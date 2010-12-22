@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{EAF909A5-FA59-4C3D-9431-0FCC20D5BCF9}") = "cpreview", "cpreview.icproj", "{7A3D7E36-1FBC-437B-AFB3-083D38306E2E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A3D7E36-1FBC-437B-AFB3-083D38306E2E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7A3D7E36-1FBC-437B-AFB3-083D38306E2E}.Debug|Win32.Build.0 = Debug|Win32
+		{7A3D7E36-1FBC-437B-AFB3-083D38306E2E}.Release|Win32.ActiveCfg = Release|Win32
+		{7A3D7E36-1FBC-437B-AFB3-083D38306E2E}.Release|Win32.Build.0 = Release|Win32
+		{59FC112B-D565-4E58-B554-396C7C8548C8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{59FC112B-D565-4E58-B554-396C7C8548C8}.Release|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

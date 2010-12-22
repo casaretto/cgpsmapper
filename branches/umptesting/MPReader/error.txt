@@ -1,0 +1,8 @@
+if you change a line 180 in mp_read.cpp
+
+	struct a {
+
+meaning - anonymous structure to named one - no longer error - otherwise I get:
+1>mp_read.obj : fatal error LNK1318: Unexpected PDB error; RPC (23) '(0x000006BA)'
+
+Of course in full DEBUG mode only!

@@ -1,0 +1,126 @@
+/*
+
+ Created by: cgpsmapper
+  
+ This is open source software. Source code is under the GNU General Public License version 3.0 (GPLv3) license.
+
+ Permission to modify the code and to distribute modified code is granted,
+ provided the above notices are retained, and a notice that the code was
+ modified is included with the above copyright notice.
+
+*/
+
+#include "typeTranslation.h"
+#include "filexor.h"
+
+using namespace std;
+
+void typeReader::Read(const char* file_name) {
+  string    key,value;
+  string    name;
+  int       t_read;
+
+  int       type_start,type_end;
+
+  if( dataReady )
+	  return;
+  dataReady = true;
+
+  vector<RGN_names> *c_RGN_names_current = NULL;
+
+  xor_fstream* rgn_types = new xor_fstream(file_name,"rb");
+  if( rgn_types->error ) {
+    delete rgn_types;
+    //cout<<">>>>>"<<file_name<<" file NOT FOUND!!<<<<<"<<endl;
+    return;
+  }
+
+  t_read = rgn_types->ReadInput(key,value);
+  while( t_read == 1 || t_read == 3 || t_read == 5 || t_read == 2 ) {
+    if( key == string("[RGN10/20 TYPES]") ) {
+      c_RGN_names_current = &c_RGN_names_1020;
+      key="";
+    }
+    if( key == string("[RGN40 TYPES]") ) {
+      c_RGN_names_current = &c_RGN_names_40;
+      key="";
+    }
+    if( key == string("[RGN80 TYPES]") ) {
+      c_RGN_names_current = &c_RGN_names_80;
+      key="";
+    }
+
+    if( key == string("[END-RGN10/20 TYPES]")
+     || key == string("[END-RGN40 TYPES]")
+     || key == string("[END-RGN80 TYPES]") ) {
+      c_RGN_names_current = NULL;
+      key="";
+    }
+
+    if( c_RGN_names_current != NULL && key.length() && t_read != 0 ) {
+		if( key[0] != ';' ) {
+			InterpreteRGNTypeLine(key,type_start,type_end,name);
+			(*c_RGN_names_current).push_back( RGN_names(name.c_str(), type_start, type_end-type_start) );
+		}
+    }
+
+    t_read = rgn_types->ReadInput(key,value);
+  }
+
+  delete rgn_types;
+//  RGNTypesLoaded = true;
+}
+
+void typeReader::InterpreteRGNTypeLine(string line,int &rgn_start,int &rgn_end,string &name)
+{
+  char          hex_str[10];
+  unsigned int  t_pos=0;
+  int           t_hex_pos=0;
+
+  //line = upper_case(line);
+  std::transform(line.begin(), line.end(), line.begin(), toupper);
+  while( t_pos < 7 && line[t_pos] != '-' && line[t_pos] != '\t' && line.length() > t_pos ) {
+    hex_str[t_hex_pos] = line[t_pos];
+    t_pos++;
+    t_hex_pos++;
+  }
+  hex_str[t_hex_pos]=0;
+
+  rgn_start = strtol(hex_str,NULL,0);
+  rgn_end = rgn_start;
+
+  if( line[t_pos] == '-' ) {
+    t_pos++;
+    t_hex_pos = 0;
+    while( line[t_pos] != '\t' && line[t_pos] != ',' && line.length() > t_pos ) {
+      hex_str[t_hex_pos] = line[t_pos];
+      t_pos++;
+      t_hex_pos++;
+    }
+    hex_str[t_hex_pos]=0;
+    rgn_end = strtol(hex_str,NULL,0);
+  }
+
+  while( line[t_pos] != ' ' && line[t_pos] != '\t' && line.length() > t_pos ) {
+    t_pos++;
+  }
+  t_pos++;
+
+  name = line.substr(t_pos, line.length() - t_pos);
+  while( name[name.size()-1] == ' ' )
+	  name = name.substr(0,name.size()-1);
+}
+
+int  typeReader::SearchRGNName40(const char* rgn_name)
+{
+  int pos = 0;
+  int t_size = static_cast<int>((c_RGN_names_40).size());
+
+  while( pos < t_size )
+  {
+    if( !strcmp((c_RGN_names_40)[pos].name.c_str(),rgn_name) )
+      return (c_RGN_names_40)[pos].start;
+    pos++;
+  }
+  return 0;
+}

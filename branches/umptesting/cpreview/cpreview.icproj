@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Intel C++ Project"
+	Version="11.1"
+	Name="cpreview"
+	ProjectGUID="{7A3D7E36-1FBC-437B-AFB3-083D38306E2E}"
+	VCNestedProjectGUID="{59FC112B-D565-4E58-B554-396C7C8548C8}"
+	VCNestedProjectFileName="cpreview.vcproj">
+	<Configurations>
+		<Configuration
+			Name="Release|Win32">
+			<Tool
+				Name="CppCmplrTool"
+				Optimization="1000"
+				GlobalOptimizations="true"
+				InterproceduralOptimization="1"
+				OptimizeForWindowsApplication="true"
+				EnableEnhancedInstructionSet="1000"
+				UseProcExt="0"
+				GenerateAlternateCodePaths="0"
+				UseProcessorExtensions="0"
+				Parallelization="true"
+				ProfileGuidedOptimization="0"/>
+		</Configuration>
+	</Configurations>
+	<Files/>
+</VisualStudioProject>

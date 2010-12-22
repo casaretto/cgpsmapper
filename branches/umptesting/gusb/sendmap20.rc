@@ -1,0 +1,390 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Polish resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_PLK)
+#ifdef _WIN32
+LANGUAGE LANG_POLISH, SUBLANG_DEFAULT
+#pragma code_page(1250)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON                    "icon1.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+ID_PROGRESS DIALOGEX 0, 0, 341, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Sending maps..."
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_PROGRESS,"msctls_progress32",WS_BORDER | 0x1,7,20,327,14
+END
+
+ID_PROGRESS_SYNC DIALOGEX 0, 0, 341, 114
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Processing maps..."
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_PROGRESS_DOWN,"msctls_progress32",WS_BORDER | 0x1,7,30,327,14
+    CONTROL         "",IDC_PROGRESS,"msctls_progress32",WS_BORDER | 0x1,7,75,327,14
+    LTEXT           "Make sure that no other tasks are running now!",IDC_STATIC_SYNC_PROGRESS,93,7,154,8
+    LTEXT           "Relocation of GPS maps...",IDC_STATIC,7,21,84,8
+    LTEXT           "Maps uploading...",IDC_STATIC,7,66,58,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    ID_PROGRESS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 334
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    ID_PROGRESS_SYNC, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 334
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 107
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_CONNECT             "Po³¹cz"
+    IDS_REMOVE_MAPS         "Usuñ"
+    IDS_ADD_MAPS            "Dodaj"
+    IDS_EXIT                "Koniec"
+    IDS_UPLOAD              "Przeœlij mapy"
+    IDS_ERASE               "Usuñ mapy z GPS'a"
+    IDS_MAPS_STATIC         "Lista map, przeci¹gnij i upuœæ tutaj pliki IMG lub plik TXT z list¹ plików"
+    IDS_SIZE_STATIC         "Przybli¿ony rozmiar map :"
+    IDS_DEVICE_STATIC       "Urz¹dzenie"
+    IDS_SPEED_STATIC        "Prêdk.:"
+    IDS_FOUND_STATIC        "Znaleziony GPS:"
+    IDS_NO_GPS              "SprawdŸ czy GPS jest w³¹czony i pod³¹czony do komputera.\nJe¿eli ³¹czysz siê poprzez port USB - sprawdŸ czy u¿ywasz najnowszych oficjalnych sterowników USB!"
+    IDS_NO_GPS_TITLE        "Brak po³¹czenia z GPS"
+    IDS_SYNC_GPS            "Synch GPS"
+    IDS_SYNC_START          "Wchodzisz w tryb synchronizacji z GPS - oznacza to mo¿liwoœæ dodawania i usuwania map aktualnie znajduj¹cych siê w GPS.\nUWAGA Jest ca³kiem prawdopodobne, ¿e w wyniku za³adowania map do GPS'a utracisz wszystkie mapy znajduj¹ce sie w GPS!\nCzy jesteœ ABSOLUTNIE pewny, ¿e chcesz pracowaæ w trybie synchronizacji?"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_SYNC_TITLE          "Uwaga! Wchodzisz w tryb synchronizacji!"
+    IDS_SENDING             "Przetwarzanie map"
+    IDS_RELOCATING          "Relokowanie map"
+    IDS_IMG_FILE            "Stwórz GMAPSUPP.IMG"
+    IDS_EXE_FILE            "Stwórz EXE"
+    IDS_WRONG_KEY_TITLE     "Z³y klucz"
+    IDS_WRONG_KEY           "Klucz musi mieæ dok³adnie 25 znaków - wpisz swój klucz pomijaj¹c znaki myœlnika"
+    IDS_ADD_UNLOCK          "WprowadŸ klucz"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_SIZE_STATIC_ENG     "Approx. size of maps :"
+    IDS_DEVICE_STATIC_ENG   "Device"
+    IDS_SPEED_STATIC_ENG    "Speed :"
+    IDS_FOUND_STATIC_ENG    "Found GPS :"
+    IDS_NO_GPS_ENG          "Check if your GPS is turned ON and connected to the computer.\nIf you are using USB port - be sure to use latest Garmin USB drivers!"
+    IDS_NO_GPS_TITLE_ENG    "Cannot detect GPS"
+    IDS_SYNC_GPS_ENG        "Sync GPS"
+    IDS_SYNC_START_ENG      "You are entering SYNC with GPS mode - that mean - you can add and delete maps which are currently in GPS.\nWARNING - it is quite possibly that after uploading changed mapset to GPS you loose ALL the maps from GPS!\nAre you ABSOLUTELY sure you want to enter SYNC mode?"
+    IDS_SYNC_TITLE_ENG      "Warning! Entering SYNC mode!"
+    IDS_SENDING_ENG         "Processing maps"
+    IDS_RELOCATING_ENG      "GPS Map relocation"
+    IDS_IMG_FILE_ENG        "Create GMAPSUPP.IMG"
+    IDS_EXE_FILE_ENG        "Create EXE file"
+    IDS_WRONG_KEY_TITLE_ENG "Bad key"
+    IDS_WRONG_KEY_ENG       "The key must be exactly 25 character long - enter your key without '-'"
+    IDS_ADD_UNLOCK_ENG      "Enter unlock key"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_CONNECT_ENG         "Connect"
+    IDS_REMOVE_MAPS_ENG     "Remove"
+    IDS_ADD_MAPS_ENG        "Add maps"
+    IDS_EXIT_ENG            "Exit"
+    IDS_UPLOAD_ENG          "Upload maps to GPS"
+    IDS_ERASE_ENG           "Erase maps in GPS"
+    IDS_MAPS_STATIC_ENG     "Maps to upload, just drag and drop your IMG files OR file list TXT here"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_SIZE_STATIC_FRA     "Tailles approx. des cartes :"
+    IDS_DEVICE_STATIC_FRA   "Appareil"
+    IDS_SPEED_STATIC_FRA    "Vitesse :"
+    IDS_FOUND_STATIC_FRA    "GPS trouvé :"
+    IDS_NO_GPS_FRA          "Vérifiez que votre GPS est allumé et connecté à l'ordinateur.\nSi vous utilisez le port USB, assurez-vous d'avoir installé les derniers pilotes de Garmin."
+    IDS_NO_GPS_TITLE_FRA    "Ne détecte pas le GPS"
+    IDS_SYNC_GPS_FRA        "Sync GPS"
+    IDS_SYNC_START_FRA      "Vous entrez en mode SYNC - vous pouvez ajouter ou enlever des cartes actuellement dans votre GPS.\nATTENTION - il est très possible qu'après avoir téléchargé un jeu de cartes, que vous perdiez toutes les cartes présentement dans le GPS!\nÊtes-vous ABSOLUMENT sur de vouloir entrer en mode SYNC ?"
+    IDS_SYNC_TITLE_FRA      "ATTENTION ! Entrée en mode SYNC !"
+    IDS_SENDING_FRA         "Sending maps"
+    IDS_RELOCATING_FRA      "GPS Map relocation"
+    IDS_IMG_FILE_FRA        "Create GMAPSUPP.IMG"
+    IDS_EXE_FILE_FRA        "Create EXE"
+    IDS_WRONG_KEY_TITLE_FRA "Bak key"
+    IDS_WRONG_KEY_FRA       "The key must be exactly 25 character long - enter your key without '-'"
+    IDS_ADD_UNLOCK_FRA      "Écrire la clef débloquée"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_CONNECT_FRA         "Connecter"
+    IDS_REMOVE_MAPS_FRA     "Retirer"
+    IDS_ADD_MAPS_FRA        "Ajouter cartes"
+    IDS_EXIT_FRA            "Sortir"
+    IDS_UPLOAD_FRA          "Télécharger cartes vers GPS"
+    IDS_ERASE_FRA           "Effacer les cartes du GPS"
+    IDS_MAPS_STATIC_FRA     "Cartes a télécharger"
+END
+
+#endif    // Polish resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+ID_LICENCE DIALOGEX 0, 0, 321, 205
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Sendmap20"
+FONT 8, "Courier New", 400, 0, 0xEE
+BEGIN
+    DEFPUSHBUTTON   "no",IDNO,245,182,69,14
+    PUSHBUTTON      "yes",IDYES,168,182,69,14
+    CONTROL         "",IDC_RICHEDIT22,"RichEdit20A",ES_MULTILINE | ES_READONLY | WS_BORDER | WS_VSCROLL | WS_TABSTOP,7,4,307,173
+END
+
+ID_EXPIRATION DIALOGEX 0, 0, 321, 85
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Sendmap20"
+FONT 8, "Courier New", 400, 0, 0xEE
+BEGIN
+    DEFPUSHBUTTON   "OK",IDYES,126,66,69,14
+    CONTROL         "",IDC_EDIT2,"RichEdit20A",ES_MULTILINE | ES_READONLY | WS_BORDER | WS_VSCROLL | WS_TABSTOP,7,5,307,55
+END
+
+ID_INFO DIALOGEX 0, 0, 322, 83
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Sendmap20"
+FONT 10, "Courier", 400, 0, 0xEE
+BEGIN
+    DEFPUSHBUTTON   "OK",IDNO,126,60,69,14
+    CTEXT           "Thank you for using sendmap20 program. cGPSmapper free version and sendmap20 free version can be used to create only NON COMMERCIAL maps. If you want to know more - visit sendmap20 and cGPSmapper home-page :",IDC_STATIC,7,4,308,31
+    CTEXT           "http://cgpsmapper.com",IDC_STATIC,7,39,308,15
+END
+
+ID_MAIN DIALOGEX 0, 0, 419, 296
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Sendmap20"
+FONT 8, "Courier New", 400, 0, 0xEE
+BEGIN
+    LTEXT           "Sendmap20 by Stanislaw Kozicki, gps_mapper cgpsmapper@gmail.com",IDC_STATIC,78,0,253,8
+    LTEXT           "http://cgpsmapper.com",IDC_STATIC,150,12,85,8
+    LTEXT           "Maps to upload",IDC_MAPS_STATIC,6,26,334,8
+    PUSHBUTTON      "Add maps",IDC_ADD_MAPS,348,36,66,14
+    PUSHBUTTON      "Remove",IDC_REMOVE_MAPS,348,54,66,14
+    PUSHBUTTON      "Sync GPS",IDC_SYNC_GPS,348,72,66,14
+    PUSHBUTTON      "Save file list",IDC_STORE_FILES,348,135,66,14
+    LTEXT           "Region name:",IDC_SIZE_STATIC3,180,174,54,8
+    EDITTEXT        IDC_EDIT_REGION,258,174,156,14,ES_AUTOHSCROLL
+    LTEXT           "Mapset name:",IDC_SIZE_STATIC2,180,192,54,8
+    EDITTEXT        IDC_EDIT_MAPSET,258,192,156,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Enter unlock key",IDC_ADD_UNLOCK,300,210,114,14
+    PUSHBUTTON      "Create GMAPSUPP.IMG file",IDC_IMG_FILE,300,228,114,14
+    PUSHBUTTON      "Create EXE package",IDC_EXE_FILE,300,246,114,14
+    PUSHBUTTON      "Exit",IDC_EXIT,354,264,60,14
+    GROUPBOX        "Device",IDC_DEVICE_STATIC,6,168,168,110
+    LTEXT           "Port :",IDC_STATIC,12,186,25,8
+    COMBOBOX        IDC_PORTS,42,180,36,42,CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "",IDC_FOUND_STATIC,66,198,71,8
+    LTEXT           "-",IDC_GPS_TEXT,12,216,156,8
+    LTEXT           "-",IDC_SIZE_TOTAL,114,156,66,8
+    LTEXT           "Speed :",IDC_SPEED_STATIC,84,186,29,8
+    COMBOBOX        IDC_SPEEDS,120,180,48,42,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Connect",ID_CONNECT,12,198,45,14
+    PUSHBUTTON      "Erase maps in GPS",IDC_ERASE,12,228,114,14
+    PUSHBUTTON      "Upload selected maps to GPS",IDC_UPLOAD,12,246,114,14
+    CONTROL         "NT format",IDC_NT_FORMAT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,264,52,10
+    CONTROL         "Append maps to GPS maps",IDC_APPEND,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,306,12,108,10
+    LTEXT           "Approx. size of maps :",IDC_SIZE_STATIC,6,156,102,8
+    CONTROL         "",IDC_IMG_LIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_EDITLABELS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,6,35,330,114
+    LTEXT           "To get the help please start sendmap20 from the command line with option '-h'",IDC_STATIC,46,283,309,8
+END
+
+ID_KEY DIALOGEX 0, 0, 263, 49
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Sendmap20"
+FONT 8, "Courier New", 400, 0, 0xEE
+BEGIN
+    PUSHBUTTON      "Cancel",IDC_EXIT,198,30,60,14
+    DEFPUSHBUTTON   "Add",IDC_ADD,132,30,60,14
+    LTEXT           "Unlock key",IDC_STATIC_KEY,6,13,41,8
+    EDITTEXT        IDC_EDIT_ENTER_KEY,66,6,192,14,ES_AUTOHSCROLL
+END
+
+ID_EXE_CREATE DIALOGEX 0, 0, 375, 127
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Sendmap20"
+FONT 8, "Courier New", 400, 0, 0xEE
+BEGIN
+    PUSHBUTTON      "Generate EXE",IDC_EXE_CREATE,298,108,72,14
+    PUSHBUTTON      "Exit",IDC_EXIT,226,108,60,14
+    EDITTEXT        IDC_EDIT_KEY,174,12,48,14,ES_AUTOHSCROLL | WS_DISABLED
+    CONTROL         "Expiration date (dd/mm/yyyy)",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,6,12,128,10
+    CONTROL         "Lock to (GPS ID):",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,6,30,84,10
+    EDITTEXT        IDC_EDIT_KEY2,174,30,91,14,ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "Copyright text:",IDC_STATIC,6,49,61,8
+    EDITTEXT        IDC_EDIT_KEY5,174,49,196,14,ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "File with licence text (can be empty):",IDC_STATIC,6,67,153,8
+    EDITTEXT        IDC_EDIT_KEY6,174,67,196,14,ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "File with expiration text (can be empty):",IDC_STATIC,6,84,165,8
+    EDITTEXT        IDC_EDIT_KEY7,174,85,196,14,ES_AUTOHSCROLL | WS_DISABLED
+    PUSHBUTTON      "Get ID",IDC_BUTTON_GET_ID,270,30,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    ID_LICENCE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 314
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 196
+    END
+
+    ID_EXPIRATION, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 80
+    END
+
+    ID_INFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 315
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 74
+    END
+
+    ID_MAIN, DIALOG
+    BEGIN
+        RIGHTMARGIN, 414
+        BOTTOMMARGIN, 291
+    END
+
+    ID_KEY, DIALOG
+    BEGIN
+        RIGHTMARGIN, 258
+        BOTTOMMARGIN, 44
+    END
+
+    ID_EXE_CREATE, DIALOG
+    BEGIN
+        RIGHTMARGIN, 370
+        BOTTOMMARGIN, 122
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
