@@ -31,6 +31,7 @@
 bool	initMDR(string base_name);
 bool	createTables();
 bool	processIMG(std::string fileName,bool idx_ignore);
+void	finalizeIMGs();
 int		getCodePage();
 void	setMultibody(bool multibody);
 sqlite3	*getMDRbase();

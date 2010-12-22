@@ -221,6 +221,7 @@ void previewMDR::execute(bool by_region,bool multibody) {
 		}
 		cout<<endl;
 	}
+	finalizeIMGs();
 
 	//create MDR
 	//MDR4

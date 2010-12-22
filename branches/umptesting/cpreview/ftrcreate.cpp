@@ -940,7 +940,9 @@ order by sort_id, xflag_seq
 				}
 			}
 
-			if( multibody ) {
+
+			// disabled, xflag computed later while creating mdr7_index
+			if( false && multibody ) {
 				int	t_last_id = -1;
 				int	t_id;
 				int	t_sort=0;
@@ -1091,6 +1093,30 @@ order by sort_id, xflag_seq
 
 		}
 
+		//aktualizuj POI z danymi z POI_IDX!
+		void finalizePOI() {
+			sqlite3_stmt *ppStmt;
+			char* s;
+			int t_tre,t_rgn,t_idx_43,t_map_id;
+			int	rc = sqlite3_prepare_v2(FTR::MDRbase,"SELECT rgn,tre,idx_43,map_id FROM POI_IDX;",-1,&ppStmt,NULL);
+			rc = sqlite3_step( ppStmt );
+			do {
+				if ( rc == SQLITE_ROW ) {
+					t_rgn = sqlite3_column_int(ppStmt,0);
+					t_tre = sqlite3_column_int(ppStmt,1);
+					t_idx_43 = sqlite3_column_int(ppStmt,2);
+					t_map_id = sqlite3_column_int(ppStmt,3);
+
+					s = sqlite3_mprintf("UPDATE POI SET idx_43 = %i WHERE tre = %i and rgn = %i and map_id = %i",				
+						t_idx_43, t_tre, t_rgn, t_map_id);
+					sqlite3_exec(FTR::MDRbase,s,NULL,NULL,NULL);			
+					sqlite3_free(s);
+				}
+				rc = sqlite3_step( ppStmt );
+			} while(rc == SQLITE_ROW);
+			sqlite3_finalize( ppStmt );
+		}
+
 		void storePOI() {
 			int	b_result;
 			unsigned char	rec_type = 0x46;
@@ -1123,30 +1149,6 @@ order by sort_id, xflag_seq
 					file_out->Write(&(*i).lbl1,4);
 					file_out->WriteString((*i).text);
 				}
-			}
-			
-			//aktualizuj POI z danymi z POI_IDX!
-			{
-				sqlite3_stmt *ppStmt;
-				char* s;
-				int t_tre,t_rgn,t_idx_43,t_map_id;
-				int	rc = sqlite3_prepare_v2(FTR::MDRbase,"SELECT rgn,tre,idx_43,map_id FROM POI_IDX;",-1,&ppStmt,NULL);
-				rc = sqlite3_step( ppStmt );
-				do {
-					if ( rc == SQLITE_ROW ) {
-						t_rgn = sqlite3_column_int(ppStmt,0);
-						t_tre = sqlite3_column_int(ppStmt,1);
-						t_idx_43 = sqlite3_column_int(ppStmt,2);
-						t_map_id = sqlite3_column_int(ppStmt,3);
-
-						s = sqlite3_mprintf("UPDATE POI SET idx_43 = %i WHERE tre = %i and rgn = %i and map_id = %i",				
-							t_idx_43, t_tre, t_rgn, t_map_id);
-						sqlite3_exec(FTR::MDRbase,s,NULL,NULL,NULL);			
-						sqlite3_free(s);
-					}
-					rc = sqlite3_step( ppStmt );
-				} while(rc == SQLITE_ROW);
-				sqlite3_finalize( ppStmt );
 			}
 		}
 }
@@ -1220,7 +1222,7 @@ bool createTables() {
 	b_result = sqlite3_exec(FTR::MDRbase,"CREATE TABLE ULICE (net_map text,map_id int,t_text text,lbl1 int,id_43 int,id_53 int,id_4e int,net int);",NULL,NULL,NULL);if( b_result ) std::runtime_error(sqlite3_errmsg(FTR::MDRbase)); 
 #else
 	b_result = sqlite3_exec(FTR::MDRbase,"CREATE TABLE MDR1 (address int,id int,map_id int,offset int,structSize int,mdr11_data_offset int,mdr11_records_count int,mdr10_data_offset,mdr7_data_offset int,mdr7_records_count int,mdr5_data_offset int,mdr5_records_count int,mdr6_data_offset int,mdr6_records_count int,MDR16_data_offset int,MDR16_records_count int,MDR17_data_offset int,MDR17_record_count int,MDR18_data_offset int,MDR18_record_count int,mdr20_data_offset int,mdr20_records_count int,mdr21_data_offset int,mdr21_records_count int,mdr22_data_offset int,mdr22_records_count int,mdrX_data_offset int,mdrX_records_count int);",NULL,NULL,NULL);	if( b_result ) std::runtime_error(sqlite3_errmsg(FTR::MDRbase)); 
-	b_result = sqlite3_exec(FTR::MDRbase,"CREATE TABLE MDR15 (address int,lbl_index int,t_text text collate gsort,leng int);",NULL,NULL,NULL);	if( b_result ) std::runtime_error(sqlite3_errmsg(FTR::MDRbase)); 
+	b_result = sqlite3_exec(FTR::MDRbase,"CREATE TABLE MDR15 (address int,lbl_index int,t_text text,leng int);",NULL,NULL,NULL);	if( b_result ) std::runtime_error(sqlite3_errmsg(FTR::MDRbase)); 
 	b_result = sqlite3_exec(FTR::MDRbase,"CREATE TABLE MDR14 (address int,mdr1_id int,id int,rec_id int,mdr15_id int,lbl1 int,t_text text collate gsort,id_4e int );",NULL,NULL,NULL);if( b_result ) std::runtime_error(sqlite3_errmsg(FTR::MDRbase)); 
 	b_result = sqlite3_exec(FTR::MDRbase,"CREATE TABLE MDR13 (address int,mdr1_id int,id int,rec_id int,mdr15_id int,mdr14_id int,lbl1 int,t_text text collate gsort,t_index int);",NULL,NULL,NULL);if( b_result ) std::runtime_error(sqlite3_errmsg(FTR::MDRbase)); 
 	b_result = sqlite3_exec(FTR::MDRbase,"CREATE TABLE MDR12 (address int,t_text text collate gsort,mdr11_id int);",NULL,NULL,NULL);if( b_result ) std::runtime_error(sqlite3_errmsg(FTR::MDRbase)); 
@@ -1253,7 +1255,7 @@ bool createTables() {
 	b_result = sqlite3_exec(FTR::MDRbase,"CREATE TABLE T53_REGIONY (mdr13_id int,map_id int,t_index int, id_4e int, lbl1 int, t_text text collate gsort);",NULL,NULL,NULL);if( b_result ) std::runtime_error(sqlite3_errmsg(FTR::MDRbase)); 
 	b_result = sqlite3_exec(FTR::MDRbase,"CREATE TABLE POI (id int,map_id int,mdr11_id int,family int, sub_type int, rgn int, tre int, unkn1 int,idx_43 int,unkn2 int, lbl1 int,t_text text collate gsort,img_address int);",NULL,NULL,NULL);if( b_result ) std::runtime_error(sqlite3_errmsg(FTR::MDRbase)); 
 	b_result = sqlite3_exec(FTR::MDRbase,"CREATE TABLE ULICE_NET (id int,net_map text,map_id int,net int,lbl1 int,t_text text collate gsort,t_full_text text collate gsort,mdr7_id_temp int,sort_start_letter int, xflag int, xflag_text text collate gsort, sort_id int);",NULL,NULL,NULL);if( b_result ) std::runtime_error(sqlite3_errmsg(FTR::MDRbase)); 
-	b_result = sqlite3_exec(FTR::MDRbase,"CREATE TABLE ULICE (net_map text,map_id int,t_text text collate gsort,lbl1 int,id_43 int,id_53 int,id_4e int,net int);",NULL,NULL,NULL);if( b_result ) std::runtime_error(sqlite3_errmsg(FTR::MDRbase)); 
+	b_result = sqlite3_exec(FTR::MDRbase,"CREATE TABLE ULICE (net_map text,map_id int,t_text text,lbl1 int,id_43 int,id_53 int,id_4e int,net int);",NULL,NULL,NULL);if( b_result ) std::runtime_error(sqlite3_errmsg(FTR::MDRbase)); 
 #endif
 	//uzywany id jest wiekszy od 0 - nieuzywane równe 0
 	//indexy
@@ -1366,6 +1368,9 @@ void setMultibody(bool multibody) {
 	FTR::multibody = multibody;
 }
 
+void finalizeIMGs(){
+    finalizePOI();
+}
 
 bool processIMG(std::string fileName,bool idx_ignore) {
 	FTR::first_pass = true;

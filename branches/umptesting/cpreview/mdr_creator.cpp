@@ -259,6 +259,7 @@ void MDR_Header::write1Value(xor_fstream* file,std::string sql,int rec_size) {
 	sqlite3_stmt *ppStmt2;
 	int rc = sqlite3_prepare_v2(getMDRbase(),sql.c_str(),-1,&ppStmt2,NULL);
 
+
 	rc = sqlite3_step( ppStmt2 );
 	if ( rc == SQLITE_ROW ) {
 		do {
@@ -471,6 +472,7 @@ void MDR_Header::writeMDR6(xor_fstream* file) {
 			file->WriteInt(sqlite3_column_int(ppStmt,1),mdr1_ref_size); //mdr1_id
 			t_size += mdr1_ref_size;
 			file->WriteInt(sqlite3_column_int(ppStmt,2),(mdr_header.mdr6_flag & 3)+1);
+
 			t_size += ((mdr_header.mdr6_flag & 3)+1);
 
 			if( mdr_header.mdr6_flag & 0x04 ) {
@@ -2035,7 +2037,7 @@ void MdrCreator::index_mdr20_mdr21_mdr22() {
 	//int	rc = sqlite3_prepare_v2(getMDRbase(),"select distinct mdr7_tmp.t_text, mdr7_tmp.city , mdr7.id, mdr7_tmp.mdr1_id, mdr7_tmp.id_43 from mdr7_tmp,mdr7 where mdr7_tmp.id_43 > -1 and mdr7.mdr1_id = mdr7_tmp.mdr1_id AND mdr7.mdr15_id = mdr7_tmp.mdr15_id order by mdr7_tmp.city ,mdr7_tmp.sort_text,mdr7.id;",-1,&ppStmt,NULL);
 	//int	rc = sqlite3_prepare_v2(getMDRbase(),"select mdr7.id, mdr7.mdr15_id, ulice.id_43, mdr7.mdr1_id,t43_miasta.t_text from ulice, mdr7,t43_miasta where ulice.map_id = mdr7.map_id and ulice.lbl1 = mdr7.lbl1 and ulice.id_43 > 0 and t43_miasta.map_id = ulice.map_id and t43_miasta.t_index = ulice.id_43 order by t43_miasta.t_text , mdr7.t_text , mdr7.id;",-1,&ppStmt,NULL);
 
-	cout<<"mdr20";
+	//cout<<"mdr20";
 	//                                                  0        1             2            3            4                5                   6               7
 	int	rc = sqlite3_prepare_v2(getMDRbase()," select mdr7.id, mdr7.mdr15_id, ulice.id_43, mdr7.mdr1_id,t43_miasta.t_text,t53_regiony.t_text,t4e_kraje.t_text,mdr7.t_text " \
 	" from ulice, mdr7,t43_miasta,t53_regiony,t4e_kraje " \
@@ -2108,10 +2110,10 @@ void MdrCreator::index_mdr20_mdr21_mdr22() {
 		rc = sqlite3_step( ppStmt );
 	} while(rc == SQLITE_ROW);
 	sqlite3_finalize( ppStmt );
-	cout<<".end";
+	//cout<<".end";
 
 	//MDR21
-	cout<<"mdr21";
+	//cout<<"mdr21";
 
 	mdr1_map_index = 1;
 	last_lbl15_index = -1;
@@ -2162,7 +2164,7 @@ void MdrCreator::index_mdr20_mdr21_mdr22() {
 		rc = sqlite3_step( ppStmt );
 	} while(rc == SQLITE_ROW);
 	sqlite3_finalize( ppStmt );
-	cout<<".end mdr22";
+	//cout<<".end mdr22";
 
 	//sqlite3_exec(getMDRbase(),"INSERT INTO MDR21(mdr7_id,flag) select distinct mdr7.id,1 from mdr7 where length(region)>0 order by region,sort_text;",NULL,NULL,NULL);
 	//MDR22
@@ -2225,7 +2227,7 @@ void MdrCreator::index_mdr20_mdr21_mdr22() {
 		rc = sqlite3_step( ppStmt );
 	} while(rc == SQLITE_ROW);
 	sqlite3_finalize( ppStmt );
-	cout<<".end mdr23";
+	//cout<<".end mdr23";
 
 	//MDR23
 	//MDR23 (address int,id int,mdr1_id int,mdr13_id int, mdr14_id int, lbl1 int, t_text text,unique int)
@@ -2257,7 +2259,7 @@ void MdrCreator::index_mdr20_mdr21_mdr22() {
 		rc = sqlite3_step( ppStmt );
 	} while(rc == SQLITE_ROW);
 	sqlite3_finalize( ppStmt );
-	cout<<".end mdr24";
+	//cout<<".end mdr24";
 
 	//MDR24
 	mdr1_map_index = 1;
@@ -2287,7 +2289,7 @@ void MdrCreator::index_mdr20_mdr21_mdr22() {
 		rc = sqlite3_step( ppStmt );
 	} while(rc == SQLITE_ROW);
 	sqlite3_finalize( ppStmt );
-	cout<<".end mdr25";
+	//cout<<".end mdr25";
 
 	//MDR25 (address int,id int,mdr5_id int)
 	{
@@ -2328,7 +2330,7 @@ void MdrCreator::index_mdr20_mdr21_mdr22() {
 		} while(rc == SQLITE_ROW);
 		sqlite3_finalize( ppStmt );
 	}
-	cout<<".end mdr27";
+	//cout<<".end mdr27";
 
 //mdr27 - order by region,city
 	//-> mdr5 
@@ -2375,7 +2377,7 @@ void MdrCreator::index_mdr20_mdr21_mdr22() {
 	//znajduje poczatek w mdr21 dla danego regionu
 	//znajduje poczatek w mdr27 dla danego regionu
 
-	cout<<".end mdr28"<<endl;
+	//cout<<".end mdr28"<<endl;
 
 	{
 		mdr1_map_index = 1;
@@ -2469,6 +2471,7 @@ void MdrCreator::index_mdr20_mdr21_mdr22() {
 				}
 				
 				progress++;
+				/*
 				if( p != int(((double)progress / (double)progress_limit )*100.0) ) {
 					p = int(((double)progress / (double)progress_limit )*100.0);
 					cout << "\r" << p;
@@ -2478,6 +2481,7 @@ void MdrCreator::index_mdr20_mdr21_mdr22() {
 						cout << " ";
 					cout << "%";
 				}
+				*/
 			}
 			rc = sqlite3_step( ppStmt );
 		} while(rc == SQLITE_ROW);
@@ -2485,7 +2489,7 @@ void MdrCreator::index_mdr20_mdr21_mdr22() {
 	}
 //mdr26
 	//-> mdr28	
-	cout<<".end mdr26";
+	//cout<<".end mdr26";
 
 	mdr1_map_index = 1;
 	rc = sqlite3_prepare_v2(getMDRbase(),"select distinct mdr28.id, mdr28.mdr1_id, mdr28.t_text ,mdr14.t_text from mdr28, mdr14, mdr23 where mdr14.id = mdr28.mdr14_id and mdr28.mdr23_id = mdr23.id order by mdr14.t_text, mdr23.t_text;",-1,&ppStmt,NULL);
@@ -2507,7 +2511,7 @@ void MdrCreator::index_mdr20_mdr21_mdr22() {
 	sqlite3_finalize( ppStmt );
 
 //mdr29
-	cout<<".end mdr29";
+	//cout<<".end mdr29";
 
 	//-> mdr24, mdr22, mdr25, mdr26
 	//select * from mdr23
@@ -2605,7 +2609,7 @@ void MdrCreator::index_mdr20_mdr21_mdr22() {
 		} while(rc == SQLITE_ROW);
 		sqlite3_finalize( ppStmt );
 	}
-	cout<<".end";
+	//cout<<".end";
 
 //	sqlite3_exec(getMDRbase(),"END TRANSACTION",NULL,NULL,NULL);
 }
@@ -2641,6 +2645,7 @@ void MdrCreator::index_mdr7() {
 	int			string_pos;
 	int			nflag;
 	int			xflag;
+	int			t_sort;
 
 	string		city_name,region_name,country_name;
 	int			city_id,region_id,country_id;
@@ -2665,9 +2670,10 @@ void MdrCreator::index_mdr7() {
 	if( multibody )	mdrHeader.mdr_header.mdr7_flag |= 0x40;
 
 	//ToDo , xflag !!
-	rc = sqlite3_prepare_v2(getMDRbase(),"select mdr1.id, t_text, lbl1, ulice_net.map_id, t_full_text, sort_start_letter, xflag from ulice_net, mdr1 where ulice_net.map_id = mdr1.map_id order by t_text;",-1,&ppStmt,NULL);
+	rc = sqlite3_prepare_v2(getMDRbase(),"select mdr1.id, t_text, lbl1, ulice_net.map_id, t_full_text, sort_start_letter, xflag from ulice_net, mdr1 where ulice_net.map_id = mdr1.map_id order by t_text,sort_start_letter,t_full_text;",-1,&ppStmt,NULL);
 	//rc = sqlite3_prepare_v2(getMDRbase(),"select mdr1.id, t_text, lbl1, ulice_net.map_id, t_full_text, sort_start_letter, xflag from ulice_net, mdr1 where ulice_net.map_id = mdr1.map_id order by t_text, xflag;",-1,&ppStmt,NULL);
 	rc = sqlite3_step( ppStmt );
+	t_sort = 0;
 	do {
 		if ( rc == SQLITE_ROW ) {
 
@@ -2676,15 +2682,17 @@ void MdrCreator::index_mdr7() {
 			if( lbl15_index != last_lbl15_index ) {
 				unique = 0;
 				xflag = 1;
+				t_sort = 0;
 			} else {
 				unique = 1;
-				xflag = 0;
+				xflag = t_sort;
+				t_sort+=2;
 			}
 			last_lbl15_index = lbl15_index;
 
 			//lbl15_index = add_lbl15(std::string((char*)sqlite3_column_text(ppStmt,4)));
 			if( multibody ) {
-				xflag = sqlite3_column_int(ppStmt,6);
+				//xflag = sqlite3_column_int(ppStmt,6);
 				if( xflag > 254 ) {
 					mdrHeader.mdr_header.mdr7_flag |= 0x80;
 					if( mdrHeader.mdr_header.mdr7_flag & 0x40 )
