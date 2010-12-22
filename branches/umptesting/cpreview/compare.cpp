@@ -20,6 +20,8 @@ namespace g_compare {
 
 	unsigned char	sort_table[223];
 	unsigned char	sort_table_a[223];
+	unsigned char	rsort_table[256];
+	unsigned char	rsort_table_a[256];
 
 	int		code_page;
 	int		lang_id;
@@ -109,36 +111,19 @@ namespace g_compare {
 			memcpy(sort_table_a,LBL1252_a,sizeof(LBL1252_a));
 			code_page = 1252;
 		}
+		memset(rsort_table,0,sizeof(rsort_table));
+		memset(rsort_table,0,sizeof(rsort_table));
+		for(int i=222; i>=0; i--){
+			rsort_table[sort_table[i]]=i;
+			rsort_table_a[sort_table_a[i]]=i;
+		}
 	}
 
 	char c_compare(unsigned char a,unsigned char b) {
 		short a_pos,b_pos;
 		//unsigned char x;
- /*
-		a_i = sort_table.find(a);
-		b_i = sort_table.find(b);
-
-		if( a_i == sort_table.end() ) 
-			a_pos = 0;
-		else
-			a_pos = (*a_i).second;
-
-		if( b_i == sort_table.end() ) 
-			b_pos = 0;
-		else
-			b_pos = (*b_i).second;
-*/
-		
-		for( a_pos = 0; a_pos < 222; a_pos++ ) {
-			//x = sort_table[a_pos];
-			if( sort_table[a_pos] == a )
-				break;
-		}
-		for( b_pos = 0; b_pos < 222; b_pos++ ) {
-			//x = sort_table[b_pos];
-			if( sort_table[b_pos] == b )
-				break;
-		}
+		a_pos = rsort_table[a];
+		b_pos = rsort_table[b];
 
 		if( sort_table_a[a_pos] == sort_table_a[b_pos] && sort_table_a[a_pos] != '0' ) {
 			//takie same - narodowe
