@@ -13,11 +13,14 @@
 #ifndef __img_structures_h
 #define __img_structures_h
 
+
 const float c_fGarminUnit = 180.0 / (1UL << 23);
 
 typedef unsigned char B2_t [2];
 typedef unsigned char B3_t [3];
 typedef unsigned char B4_t [4];
+typedef int __int16;
+typedef int __int32;
 
 struct t_map_levels {
 	unsigned char	level[10];	
@@ -86,7 +89,7 @@ struct rgn_extended {
 };
 
 //Conversion independent of the processor type - hi-lo or lo-hi
-inline unsigned __int16 ConvertB2ToUInt16 (const unsigned char* _data) {
+inline __int16 ConvertB2ToUInt16 (const unsigned char* _data) {
     return (static_cast<unsigned __int16>(_data [1]) << 8) + static_cast<unsigned __int16>(_data [0]);
 }
 
@@ -98,7 +101,7 @@ inline __int16 ConvertB2ToInt16 (const B2_t& _data) {
     return (static_cast<__int16> (_data [1]) << 8) + static_cast<__int16> (_data [0]);
 }
 
-inline unsigned __int32 ConvertB3ToUInt (const B3_t& _data) {
+inline __int32 ConvertB3ToUInt (const B3_t& _data) {
     return (static_cast<unsigned __int32> (_data [2]) << 16) + (static_cast<unsigned __int32> (_data [1]) << 8) + static_cast<unsigned __int32> (_data [0]);
 }
 
@@ -109,7 +112,7 @@ inline __int32 ConvertB3ToInt (const B3_t& _data) {
 	return l;    
 }
 
-inline unsigned __int32 ConvertB4ToUInt32 (const unsigned char* _data) {
+inline  __int32 ConvertB4ToUInt32 (const unsigned char* _data) {
     return (static_cast<unsigned __int32> (_data [3]) << 24) + (static_cast<unsigned __int32> (_data [2]) << 16) + (static_cast<unsigned __int32> (_data [1]) << 8) + static_cast<unsigned __int32> (_data [0]);
 }
 

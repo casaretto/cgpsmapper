@@ -184,7 +184,7 @@ bool SIM_interface::open_com(const char* file_name) {
 		return true;
 
 	//check directory if exist
-	CreateDirectory(t_local_drive_directory.c_str(),NULL);
+//	CreateDirectory(t_local_drive_directory.c_str(),NULL);
 
 	out_file = fopen(t_local_drive_name.c_str(),"w+b");
 	if(out_file == NULL ) {

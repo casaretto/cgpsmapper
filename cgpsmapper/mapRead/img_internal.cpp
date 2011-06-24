@@ -11,7 +11,7 @@
 */
 
 //#include <boost/interprocess/managed_mapped_file.hpp>
-#include <boost/exception.hpp>
+#include <boost/exception/all.hpp>
 #include <string>
 #include <map>
 #include <assert.h>

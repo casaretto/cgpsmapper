@@ -1,13 +1,16 @@
 TARGET = linux
 #TARGET = win
 
-CC = icc
-CXX = icpc
+CC = gcc	
+CXX = gcc
 MAKEINFO = makeinfo
 PACKAGE = cgpsmapper
 
 # CPPFLAGSLINUX = -DLINUX
 # CPPFLAGSWINDOWS = -DMINGW
+#CFLAGS="$(OTHER_CFLAGS) -mmacosx-version-min=10.4"
+#LDFLAGS="$(OTHER_LDFLAGS) -mmacosx-version-min=10.4"
+
 bin_PROGRAMS = cpreview
 cpreview_SOURCES = mdr_creator.cpp filexor.cpp utils.cpp preview.cpp tdb.cpp compare.cpp cpreview.cpp vcgl_gpc.cpp error.cpp ftrcreate.cpp \
 ./../sqlite-source/sqlite3.c ./../mapRead/img_internal.cpp ./../mapRead/mapReadDLL.cpp ./../mapRead/img.cpp ./../mapRead/hcode.cpp ./../mapRead/ITOA.C \
@@ -28,8 +31,8 @@ cpreview_OBJECTS =  mdr_creator.o filexor.o utils.o preview.o tdb.o compare.o cp
 
 #CFLAGSWINDOWS = -DMINGW -mno-cygwin -O1 -DPACKAGE=\"cgpsmapper\" -I./ -I./shp/ -I./importlib/ -I./importlib/vcgl/
 
-CFLAGSLINUX = -D_MAPREAD_STATIC -DLINUX -O2 -DPACKAGE=\"cpreview\" -I./ -I./../mapRead/ -I./../sqlite-source/ -static-intel -static-libgcc -gcc-version=430 -pthread
-#CFLAGSLINUX = -D_MAPREAD_STATIC -DLINUX -g -DPACKAGE=\"cpreview\" -I./ -I./../mapRead/ -I./../sqlite-source/ -static-intel -static-libgcc -gcc-version=430 -pthread
+3CFLAGSLINUX = -D_MAPREAD_STATIC -DLINUX -O2 -DPACKAGE=\"cpreview\" -I./ -I./../mapRead/ -I./../sqlite-source/ -static-intel -static-libgcc -version=430 -pthread  -mmacosx-version-min=10.4
+CFLAGSLINUX = -D_MAPREAD_STATIC -DLINUX -g -DPACKAGE=\"cpreview\" -I./ -I./../mapRead/ -I./../sqlite-source/ -static-intel -static-libgcc -version=430 -pthread -mmacosx-version-min=10.4
 
 ifeq ($(TARGET),windows)
 CWX = $(CXX) $(CFLAGSWINDOWS)
