@@ -2,7 +2,7 @@ TARGET = linux
 #TARGET = win
 
 CC = gcc	
-CXX = gcc
+CXX = g++
 MAKEINFO = makeinfo
 PACKAGE = cgpsmapper
 
@@ -31,8 +31,8 @@ cpreview_OBJECTS =  mdr_creator.o filexor.o utils.o preview.o tdb.o compare.o cp
 
 #CFLAGSWINDOWS = -DMINGW -mno-cygwin -O1 -DPACKAGE=\"cgpsmapper\" -I./ -I./shp/ -I./importlib/ -I./importlib/vcgl/
 
-3CFLAGSLINUX = -D_MAPREAD_STATIC -DLINUX -O2 -DPACKAGE=\"cpreview\" -I./ -I./../mapRead/ -I./../sqlite-source/ -static-intel -static-libgcc -version=430 -pthread  -mmacosx-version-min=10.4
-CFLAGSLINUX = -D_MAPREAD_STATIC -DLINUX -g -DPACKAGE=\"cpreview\" -I./ -I./../mapRead/ -I./../sqlite-source/ -static-intel -static-libgcc -version=430 -pthread -mmacosx-version-min=10.4
+#CFLAGSLINUX = -D_MAPREAD_STATIC -DLINUX -O2 -DPACKAGE=\"cpreview\" -I./ -I./../mapRead/ -I./../sqlite-source/ -static-intel -static-libgcc -version=430 -pthread  -mmacosx-version-min=10.4
+CFLAGSLINUX = -D_MAPREAD_STATIC -DLINUX -D__macosx -D_BSD_TYPES -g -DPACKAGE=\"cpreview\" -I./ -I./../mapRead/ -I./../sqlite-source/ -static-intel -static-libgcc -version=430 -pthread -mmacosx-version-min=10.4
 
 ifeq ($(TARGET),windows)
 CWX = $(CXX) $(CFLAGSWINDOWS)
@@ -61,7 +61,7 @@ cpreview: $(gpsmapper_OBJECTS) $(gpsmapper_SOURCES)
 #
 
 cpreview-static: $(cpreview_OBJECTS) $(cpreview_SOURCES)
-	$(CWX) $(cpreview_OBJECTS) -static -o cpreview-static
+	$(CWX) $(cpreview_OBJECTS) -o cpreview-static
 
 clean:
 	-rm -f *.o core *.core  ./../mapRead/*.o ./../sqlite-source/*.o ./../gusb/*.o

@@ -1,0 +1,145 @@
+g++ -D_MAPREAD_STATIC -DLINUX -D__macosx -D_BSD_TYPES -g -DPACKAGE=\"cpreview\" -I./ -I./../mapRead/ -I./../sqlite-source/ -static-intel -static-libgcc -version=430 -pthread -mmacosx-version-min=10.4 -c -o ../mapRead/img_internal.o ../mapRead/img_internal.cpp
+../mapRead/img_internal.cpp: In member function ‘long int IMG_internal_list::openMap(const char*, int, int&)’:
+../mapRead/img_internal.cpp:215: error: no matching function for call to ‘IMG_internal_list::readData(int, int)’
+../mapRead/img_internal.h:275: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:223: error: no matching function for call to ‘IMG_internal_list::readData(int, int)’
+../mapRead/img_internal.h:275: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:225: error: no matching function for call to ‘IMG_internal_list::readData(int, int)’
+../mapRead/img_internal.h:275: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:229: error: no matching function for call to ‘IMG_internal_list::readData(int, int)’
+../mapRead/img_internal.h:275: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:377: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.h:275: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:386: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.h:275: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:396: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.h:275: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:417: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.h:275: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:491: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.h:275: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘long int IMG_internal_list::initMap(int, unsigned int)’:
+../mapRead/img_internal.cpp:530: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.h:275: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:562: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, unsigned int&)’
+../mapRead/img_internal.h:275: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:602: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, unsigned int&)’
+../mapRead/img_internal.h:275: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:622: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, long unsigned int)’
+../mapRead/img_internal.h:275: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘internal_file_type IMG_internal_list::add_file_from_FAT(long unsigned int&, long unsigned int&, long unsigned int&, std::string&, unsigned int&)’:
+../mapRead/img_internal.cpp:729: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.h:275: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘void IMG_internal_list::append6bitSymbol(int&, unsigned char, std::string&, bool&)’:
+../mapRead/img_internal.cpp:787: warning: comparison is always true due to limited range of data type
+../mapRead/img_internal.cpp: In member function ‘std::string IMG_internal_list::readLBL(const long int&)’:
+../mapRead/img_internal.cpp:944: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int, int)’
+../mapRead/img_internal.h:275: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)’:
+../mapRead/img_internal.cpp:1048: warning: format ‘%i’ expects type ‘int’, but argument 2 has type ‘long unsigned int’
+../mapRead/img_internal.cpp:1049: warning: format ‘%i’ expects type ‘int’, but argument 2 has type ‘long unsigned int’
+../mapRead/img_internal.cpp:1067: warning: format ‘%i’ expects type ‘int’, but argument 2 has type ‘long unsigned int’
+../mapRead/img_internal.cpp:1068: warning: format ‘%i’ expects type ‘int’, but argument 2 has type ‘long unsigned int’
+../mapRead/img_internal.cpp: In member function ‘bool IMG_internal_list::redrawTRE(const short unsigned int&)’:
+../mapRead/img_internal.cpp:1511: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, long unsigned int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘bool IMG_internal_list::locateRGN40(const short unsigned int&, const short int&, unsigned char&, long unsigned int&, long int&, long int&, long int&)’:
+../mapRead/img_internal.cpp:1680: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, long unsigned int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘bool IMG_internal_list::locateRGN1020(const short unsigned int&, const short int&, t_coord&, std::string&, long unsigned int&)’:
+../mapRead/img_internal.cpp:1753: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, long unsigned int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:1782: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:1814: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘int IMG_internal_list::exportPolylineSegments(int, int, const long unsigned int&, const long int&, const long int&, const long int&, mapRead_address*, unsigned int&)’:
+../mapRead/img_internal.cpp:1859: error: no matching function for call to ‘IMG_internal_list::readData(const long unsigned int&, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘long unsigned int IMG_internal_list::exportPolyline(int, int, const long unsigned int&, const long int&, const long int&, const long int&)’:
+../mapRead/img_internal.cpp:2027: error: no matching function for call to ‘IMG_internal_list::readData(const long unsigned int&, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2055: error: no matching function for call to ‘IMG_internal_list::readData(const long unsigned int&, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2271: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘long unsigned int IMG_internal_list::exportPoint(int, int, const long unsigned int&, const long int&, const long int&, const long int&)’:
+../mapRead/img_internal.cpp:2307: error: no matching function for call to ‘IMG_internal_list::readData(const long unsigned int&, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2393: error: no matching function for call to ‘IMG_internal_list::readData(const long unsigned int&, long unsigned int&)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2414: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2425: error: no matching function for call to ‘IMG_internal_list::readData(const long unsigned int&, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2454: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘void IMG_internal_list::readCityRegionCountry_i(const int&, std::string&, long unsigned int&, std::string&, long unsigned int&, std::string&, long unsigned int&)’:
+../mapRead/img_internal.cpp:2498: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, short unsigned int&)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2513: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, short unsigned int&)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2523: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2532: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘void IMG_internal_list::readZip(unsigned int&, std::string&)’:
+../mapRead/img_internal.cpp:2551: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘void IMG_internal_list::readZip_i(unsigned int&, std::string&, long unsigned int&)’:
+../mapRead/img_internal.cpp:2562: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘void IMG_internal_list::readIndex(int (*)(int, const char*, long unsigned int, int, int, const char*, long unsigned int, int, int, int, const char*, long unsigned int, int, const char*, long unsigned int))’:
+../mapRead/img_internal.cpp:2588: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2597: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2613: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, short unsigned int&)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2631: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, short unsigned int&)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2646: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘long int IMG_internal_list::readNETroads(int, const long unsigned int&, int*, int)’:
+../mapRead/img_internal.cpp:2676: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2759: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, long unsigned int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘void IMG_internal_list::readNET(const long unsigned int&)’:
+../mapRead/img_internal.cpp:2805: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2885: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, long unsigned int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2929: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, long unsigned int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2984: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, long unsigned int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:2993: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:3010: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, long unsigned int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:3023: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, long unsigned int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘void IMG_internal_list::readCityInfo(const long unsigned int&, long unsigned int&, short unsigned int, mapRead_address*, short unsigned int)’:
+../mapRead/img_internal.cpp:3206: error: no matching function for call to ‘IMG_internal_list::readData(const long unsigned int&, long unsigned int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:3281: error: no matching function for call to ‘IMG_internal_list::readData(const long unsigned int&, long unsigned int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:3311: error: no matching function for call to ‘IMG_internal_list::readData(const long unsigned int&, long unsigned int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘void IMG_internal_list::readCityInfo(const long unsigned int&, long unsigned int&, short unsigned int, mapRead_address_i*, short unsigned int)’:
+../mapRead/img_internal.cpp:3349: error: no matching function for call to ‘IMG_internal_list::readData(const long unsigned int&, long unsigned int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:3421: error: no matching function for call to ‘IMG_internal_list::readData(const long unsigned int&, long unsigned int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘void IMG_internal_list::readNumbers(const long unsigned int&, long unsigned int&, short unsigned int, unsigned char, mapRead_address*, int)’:
+../mapRead/img_internal.cpp:3639: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, short unsigned int&, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp: In member function ‘void IMG_internal_list::readPOI(const unsigned int&, const unsigned int&, const long unsigned int&, const long unsigned int&)’:
+../mapRead/img_internal.cpp:3846: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:3960: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+../mapRead/img_internal.cpp:3973: error: no matching function for call to ‘IMG_internal_list::readData(long unsigned int, int)’
+../mapRead/img_internal.cpp:1043: note: candidates are: void IMG_internal_list::readData(long unsigned int&, size_t, const unsigned int&)
+make: *** [../mapRead/img_internal.o] Error 1
