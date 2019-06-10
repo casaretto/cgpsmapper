@@ -460,6 +460,7 @@ namespace FTR {
 			string t_name;
 			char *s;
 			int b_result;
+                        sqlite3_stmt *stmt;
 
 			//cout<<"idx:"<<file_name<<" ";
 			xor_fstream* t_file = new xor_fstream(file_name.c_str(),"rb");
@@ -479,6 +480,9 @@ namespace FTR {
 			
 			//cout<<t_id<<endl;
 			sqlite3_exec(FTR::MDRbase,"BEGIN TRANSACTION",NULL,NULL,NULL);
+
+                        sqlite3_prepare(FTR::MDRbase, "INSERT INTO POI_IDX(id, rgn , tre ,idx_43 ,t_text,map_id ) VALUES (?, ?, ?, ?, ?, ?);", -1, &stmt, 0);     
+     
 			for(;;) {
 				t_rgn = 0;
 				t_tre = 0;
@@ -513,15 +517,25 @@ namespace FTR {
 				if( _43_miasta[t_idx43-1].id_4e )
 					_4e_kraje[_43_miasta[t_idx43-1].id_4e-1].valid = true;
 
-				s = sqlite3_mprintf("INSERT INTO POI_IDX(id, rgn , tre ,idx_43 ,t_text,map_id ) VALUES (%i, %i,%i,%i,'%q',%i);",t_next_id, t_rgn,t_tre,t_idx43,t_name.c_str(),t_map_id);
-				b_result = sqlite3_exec(FTR::MDRbase,s,NULL,NULL,NULL);
-				sqlite3_free(s);
+                                sqlite3_bind_int(stmt,1,t_next_id);
+                                sqlite3_bind_int(stmt,2,t_rgn);
+                                sqlite3_bind_int(stmt,3,t_tre);;
+                                sqlite3_bind_int(stmt,4,t_idx43);;
+                                sqlite3_bind_text(stmt,5,t_name.c_str(),t_name.size(),SQLITE_STATIC);
+                                sqlite3_bind_int(stmt,1,t_map_id); 
+                                sqlite3_step(stmt);
+
+     
+     			
+	                        //sqlite3_free(s);
 
 #if _ERROR_FIND == 1
 				}
 #endif
 				t_next_id++;
 
+                                sqlite3_reset(stmt);
+                                sqlite3_clear_bindings(stmt); 
 			}
 			sqlite3_exec(FTR::MDRbase,"END TRANSACTION",NULL,NULL,NULL);
 			delete t_file;
